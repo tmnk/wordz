@@ -13,13 +13,32 @@ func random(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
-func GenWord() string {
-	length := random(3, 10)
+func GenWord(n ...int) string {
+	var length int
+	if len(n) == 0 {
+		length = random(3, 10)
+	} else {
+		length = n[0]
+	}
 	word := ""
 	for i:= 0; i < length; i++ {
 		word += genRandLetter()
 	}
 	return word
+}
+
+func GenString(n ...int) string {
+	var length int
+	if len(n) == 0 {
+		length = random(3, 10)
+	} else {
+		length = n[0]
+	}
+	result := ""
+	for i:= 0; i < length; i++ {
+		result += GenWord()
+	}
+	return result
 }
 
 func init() {
