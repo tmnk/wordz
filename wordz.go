@@ -36,7 +36,11 @@ func GenString(n ...int) string {
 	}
 	result := ""
 	for i:= 0; i < length; i++ {
-		result += GenWord()
+		if len(result) != 0 {
+			result += " " +  GenWord()
+		} else {
+			result += GenWord()
+		}
 	}
 	return result
 }
